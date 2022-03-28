@@ -1,7 +1,7 @@
-import React from "react";
-import Search from "./Search";
+import React from 'react';
+import Search from './Search';
 
-function Header() {
+function Header({ handleSearch, setQuery, query }) {
   return (
     <header>
       <h1>
@@ -10,7 +10,7 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search handleSearch={handleSearch} setQuery={setQuery} query={query} />
     </header>
   );
 }
