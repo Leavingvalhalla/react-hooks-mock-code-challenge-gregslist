@@ -15,7 +15,7 @@ function ListingCard({ listing, onDeleteClick }) {
     <li className="card">
       <div className="image">
         <span className="price">$0</span>
-        <img src={listing.image} alt={'description'} />
+        <img src={listing.image} alt={listing.description} />
       </div>
       <div className="details">
         {isClicked ? (

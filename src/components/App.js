@@ -5,6 +5,7 @@ import ListingsContainer from './ListingsContainer';
 function App() {
   const [query, setQuery] = useState('');
   const [listings, setListings] = useState('');
+  const [listingsToRender, setListingsToRender] = useState('');
 
   useEffect(
     () =>
@@ -14,8 +15,15 @@ function App() {
     []
   );
 
+  useEffect(() => setListingsToRender(listings), [listings]);
+
   function handleSearch(e) {
     e.preventDefault();
+    setListingsToRender(
+      listings.filter((listing) =>
+        listing.description.toLowerCase().includes(query.toLowerCase())
+      )
+    );
   }
 
   function onDeleteClick(listingToDelete) {
@@ -36,7 +44,10 @@ function App() {
   return (
     <div className="app">
       <Header handleSearch={handleSearch} setQuery={setQuery} query={query} />
-      <ListingsContainer onDeleteClick={onDeleteClick} listings={listings} />
+      <ListingsContainer
+        onDeleteClick={onDeleteClick}
+        listings={listingsToRender}
+      />
     </div>
   );
 }
